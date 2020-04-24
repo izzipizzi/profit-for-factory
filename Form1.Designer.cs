@@ -28,21 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabProfit = new System.Windows.Forms.TabPage();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabAddWorker = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,19 +64,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabProfit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabAddWorker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -126,6 +126,111 @@
             this.tabProfit.UseVisualStyleBackColor = true;
             this.tabProfit.Click += new System.EventHandler(this.tabProfit_Click);
             // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.comboBox4.Location = new System.Drawing.Point(34, 36);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(259, 24);
+            this.comboBox4.TabIndex = 10;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 17);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Виберіть рік";
+            // 
+            // chart1
+            // 
+            this.chart1.BorderlineWidth = 20;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            legend2.Name = "Legend1";
+            legend2.Title = "Значення в гривнях";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(7, 82);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
+            this.chart1.Name = "chart1";
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series7.Legend = "Legend1";
+            series7.LegendText = "Загально витрачено";
+            series7.MarkerSize = 20;
+            series7.MarkerStep = 20;
+            series7.Name = "Series1";
+            series7.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.LegendText = "Загально зароблено";
+            series8.Name = "Series2";
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.LegendText = "Витрачено на зарплати";
+            series9.Name = "Series3";
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.LegendText = "Податок";
+            series10.Name = "Series4";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.LegendText = "Витрачено на деталі";
+            series11.Name = "Series5";
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.LegendText = "Прибуток";
+            series12.Name = "Series6";
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
+            this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
+            this.chart1.Size = new System.Drawing.Size(1088, 692);
+            this.chart1.TabIndex = 10;
+            this.chart1.Text = "Інфографіка по продажам";
+            title2.Name = "Інфографіка по продажам";
+            this.chart1.Titles.Add(title2);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(402, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 17);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Виберіть місяць";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Січень",
+            "Лютий",
+            "Березень",
+            "Квітень",
+            "Травень",
+            "Червень",
+            "Липень",
+            "Серпень",
+            "Вересень",
+            "Жовтень",
+            "Листопад",
+            "Грудень"});
+            this.comboBox2.Location = new System.Drawing.Point(405, 36);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(259, 24);
+            this.comboBox2.TabIndex = 8;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
             // tabAddWorker
             // 
             this.tabAddWorker.Controls.Add(this.button4);
@@ -149,6 +254,16 @@
             this.tabAddWorker.UseVisualStyleBackColor = true;
             this.tabAddWorker.Enter += new System.EventHandler(this.tabAddWorker_Enter);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(23, 366);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(208, 23);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "Видалити працівника";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(23, 324);
@@ -162,6 +277,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(23, 273);
+            this.textBox5.MaxLength = 8;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(208, 22);
             this.textBox5.TabIndex = 9;
@@ -188,6 +304,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(23, 165);
+            this.textBox4.MaxLength = 8;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(208, 22);
             this.textBox4.TabIndex = 6;
@@ -291,91 +408,6 @@
             this.textBox6.Size = new System.Drawing.Size(259, 22);
             this.textBox6.TabIndex = 6;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Січень",
-            "Лютий",
-            "Березень",
-            "Квітень",
-            "Травень",
-            "Червень",
-            "Липень",
-            "Серпень",
-            "Вересень",
-            "Жовтень",
-            "Листопад",
-            "Грудень"});
-            this.comboBox2.Location = new System.Drawing.Point(405, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(259, 24);
-            this.comboBox2.TabIndex = 8;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(402, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 17);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Виберіть місяць";
-            // 
-            // chart1
-            // 
-            this.chart1.BorderlineWidth = 20;
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            this.chart1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            legend5.Name = "Legend1";
-            legend5.Title = "Значення в гривнях";
-            this.chart1.Legends.Add(legend5);
-            this.chart1.Location = new System.Drawing.Point(7, 82);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4);
-            this.chart1.Name = "chart1";
-            series25.ChartArea = "ChartArea1";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series25.Legend = "Legend1";
-            series25.LegendText = "Загально витрачено";
-            series25.MarkerSize = 20;
-            series25.MarkerStep = 20;
-            series25.Name = "Series1";
-            series25.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series26.ChartArea = "ChartArea1";
-            series26.Legend = "Legend1";
-            series26.LegendText = "Загально зароблено";
-            series26.Name = "Series2";
-            series27.ChartArea = "ChartArea1";
-            series27.Legend = "Legend1";
-            series27.LegendText = "Витрачено на зарплати";
-            series27.Name = "Series3";
-            series28.ChartArea = "ChartArea1";
-            series28.Legend = "Legend1";
-            series28.LegendText = "Податок";
-            series28.Name = "Series4";
-            series29.ChartArea = "ChartArea1";
-            series29.Legend = "Legend1";
-            series29.LegendText = "Витрачено на деталі";
-            series29.Name = "Series5";
-            series30.ChartArea = "ChartArea1";
-            series30.Legend = "Legend1";
-            series30.LegendText = "Прибуток";
-            series30.Name = "Series6";
-            this.chart1.Series.Add(series25);
-            this.chart1.Series.Add(series26);
-            this.chart1.Series.Add(series27);
-            this.chart1.Series.Add(series28);
-            this.chart1.Series.Add(series29);
-            this.chart1.Series.Add(series30);
-            this.chart1.Size = new System.Drawing.Size(1088, 692);
-            this.chart1.TabIndex = 10;
-            this.chart1.Text = "Інфографіка по продажам";
-            title5.Name = "Інфографіка по продажам";
-            this.chart1.Titles.Add(title5);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -407,36 +439,6 @@
             this.comboBox3.Size = new System.Drawing.Size(259, 24);
             this.comboBox3.TabIndex = 8;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(31, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 17);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Виберіть рік";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.comboBox4.Location = new System.Drawing.Point(34, 36);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(259, 24);
-            this.comboBox4.TabIndex = 10;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(23, 366);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(208, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Видалити працівника";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -458,10 +460,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabProfit.ResumeLayout(false);
             this.tabProfit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabAddWorker.ResumeLayout(false);
             this.tabAddWorker.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

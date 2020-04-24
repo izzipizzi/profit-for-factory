@@ -162,7 +162,7 @@ namespace Dolotniy_postavka
             dataGridView1.DataMember = "workers";
 
             dataGridView1.Columns["Id"].Width = 40;
-
+            dataGridView1.Rows[0].Selected = true;
 
             dataGridView1.Columns["Id"].HeaderText = "№";
             dataGridView1.Columns["name"].HeaderText = "Імя";
@@ -179,28 +179,51 @@ namespace Dolotniy_postavka
 
             string name = textBox2.Text;
             string surname = textBox3.Text;
+            float salary;
             int id = getWorkerID();
-            float salary = float.Parse(textBox4.Text);
+            try {
+                salary = float.Parse(textBox4.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Зарплата має складатись з цифр");
+                textBox4.Text = String.Empty;
+                return;
+            }
+
+           
 
             try
             {
                 connect();
+                if(name != String.Empty && surname != String.Empty)
+                {
+                    SqlCommand com = connection.CreateCommand();
+                    com.CommandText = " Insert into workers (Id,name,surname,salary) " +
+                        "VALUES (@id, @name, @surname,@salary)";
+                    com.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                    com.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
+                    com.Parameters.Add("@surname", SqlDbType.NVarChar).Value = surname;
+                    com.Parameters.Add("@salary", SqlDbType.Float).Value = salary;
 
-                SqlCommand com = connection.CreateCommand();
-                com.CommandText = " Insert into workers (Id,name,surname,salary) " +
-                    "VALUES (@id, @name, @surname,@salary)";
-                com.Parameters.Add("@Id", SqlDbType.Int).Value = id;
-                com.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
-                com.Parameters.Add("@surname", SqlDbType.NVarChar).Value = surname;
-                com.Parameters.Add("@salary", SqlDbType.Float).Value = salary;
 
+                    com.ExecuteNonQuery();
+                    connection.Close();
 
-                com.ExecuteNonQuery();
-                connection.Close();
+                    MessageBox.Show("Працівника добавленно");
+                    //tabControl1.SelectTab(tabProfit);
+                    loadWorkers();
+                    textBox2.Text = String.Empty;
+                    textBox3.Text = String.Empty;
+                    textBox4.Text = String.Empty;
+                }
+                else
+                {
+                    MessageBox.Show("Заповніть всі поля");
+                }
 
-                MessageBox.Show("Працівника добавленно");
-                //tabControl1.SelectTab(tabProfit);
-                loadWorkers();
+                
+
 
             }
             catch (SqlException ex)
@@ -247,19 +270,32 @@ namespace Dolotniy_postavka
                 catch(Exception ex)
                 {
                     MessageBox.Show("Зарплата має складатися з цифр");
+                    textBox5.Text = String.Empty;
+                    return;
+
                 }
-                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                connect();
-                SqlCommand com = connection.CreateCommand();
-                com.CommandText = "UPDATE workers set salary = @salary where Id=@id";
-                com.Parameters.Add("@salary", SqlDbType.Float).Value = salary;
-                com.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                try
+                {
+                    string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                }catch(ArgumentOutOfRangeException ex)
+                {
+                    MessageBox.Show("Виберіть працівника");
+                    return;
+                }
+                if (dataGridView1.SelectedRows[0].Cells[0].Value != null)
+                {
+                    string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                    connect();
+                    SqlCommand com = connection.CreateCommand();
+                    com.CommandText = "UPDATE workers set salary = @salary where Id=@id";
+                    com.Parameters.Add("@salary", SqlDbType.Float).Value = salary;
+                    com.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
-                com.ExecuteNonQuery();
-                MessageBox.Show("Оновлено");
-                loadWorkers();
-                connection.Close();
-
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Оновлено");
+                    loadWorkers();
+                    connection.Close();
+                }
             }
             catch(SqlException ex)
             {
@@ -404,20 +440,30 @@ namespace Dolotniy_postavka
         {
             try
             {
+                try
+                {
+                    string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                }catch(ArgumentOutOfRangeException ex)
+                {
+                    MessageBox.Show("Виберіть будь-ласка працівника");
+                    return;
+                }
+                if (dataGridView1.SelectedRows[0].Cells[0].Value != null)
+                {
 
+                    string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                    connect();
+                    SqlCommand com = connection.CreateCommand();
+                    com.CommandText = "DELETE from workers where Id=@id";
+                    com.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
-                string id = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                connect();
-                SqlCommand com = connection.CreateCommand();
-                com.CommandText = "DELETE from workers where Id=@id";
-                com.Parameters.Add("@id", SqlDbType.Int).Value = id;
-
-                com.ExecuteNonQuery();
-                MessageBox.Show("Успышно видалено");
-                loadWorkers();
-                connection.Close();
-                loadWorkers();
-
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Успішно видалено");
+                    loadWorkers();
+                    connection.Close();
+                    loadWorkers();
+                }
+               
             }
             catch (SqlException ex)
             {
@@ -468,10 +514,14 @@ namespace Dolotniy_postavka
                     {
                         total_earn = float.Parse(textBox1.Text);
                         details_spend = float.Parse(textBox6.Text);
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Прибуток має складатися з цифр");
+                        textBox1.Text = String.Empty;
+                        textBox6.Text = String.Empty;
+                        return;
                     }
                     // обраховую податок без відсотка
                     float tax = (total_earn - (details_spend + salary_spend));
